@@ -28,11 +28,18 @@ GitPull is a lightweight daemon that automatically monitors, pulls, and manages 
 # Clone and build
 git clone https://github.com/yourusername/gitpull.git
 cd gitpull
-go chmod +x gitpull
+sudo chmod +x gitpull
 
 # Or install directly
-sudo cp gitpull /usr/local/bin/
+sudo cp gitpull /usr/local/bin/ # Run gitpull as system wide global command
 
+
+##  First initialization
+
+
+gitpull --servie # create the gitpull as a service and start the gitpull service on port :8445
+
+#or create a git -r respository clone and gitpull ask you if you want to run gitpull as a service 
 
 ##	Basic usage
 
