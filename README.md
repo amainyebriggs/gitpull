@@ -38,7 +38,7 @@ sudo ./gitpull -d # Run gitpull as a non system-wide global command
 ##  First initialization
 
 
-gitpull --servie # create the gitpull as a service and start the gitpull service on port :8445
+gitpull --service # create the gitpull as a service and start the gitpull service on port :8445
 
 #or create a git -r respository clone and gitpull ask you if you want to run gitpull as a service 
 
@@ -134,9 +134,11 @@ gitpull -r https://github.com/user/webapp.git -s -cmd "gunicorn app:app" -precmd
 # Delete a repository (removes files and service)
 gitpull -r https://github.com/user/repo.git -delete
 
-# Delete repository from specific folder
-cd /path/to/folder
-gitpull -r https://github.com/user/repo.git -delete
+# List all respository
+
+gitpull -list # List all respository
+
+gitpull -find https://github.com/user/repo.git #find a respository
 
 # Pause/Resume repository (from dashboard UI)
 # Click the Pause/Resume button in the web interface
