@@ -5,7 +5,7 @@
 
 GitPull is a lightweight daemon that automatically monitors, pulls, and manages multiple Git repositories with a real-time web dashboard. Perfect for auto-deployment, keeping dev environments in sync, or managing microservices.
 
-## ✨ Features
+## Features
 
 - **Auto Pull & Clone** - Automatically clones new repos and pulls updates every 30 seconds
 - **Web Dashboard** - Real-time monitoring with live updates, logs, and one-click controls
@@ -41,7 +41,7 @@ gitpull --service # create the gitpull as a service and start the gitpull servic
 #or create a git -r respository clone and gitpull ask you if you want to run gitpull as a service 
 ```
 
-<img src="dashboard.png" width="200" alt="dashboard">
+<img src="dashboard.png" width="100%" alt="dashboard">
 
 ```bash
 ##	Basic usage
@@ -144,7 +144,7 @@ gitpull -find https://github.com/user/repo.git #find a respository
 
 ```
 
-<img src="Screenshot_20260403_223815.png" width="200" alt="gitpull">
+<img src="Screenshot_20260403_223815.png" width="100%" alt="gitpull">
 
 ```bash
 
@@ -207,4 +207,4 @@ gitpull -r https://github.com/company/webapp.git -b production -s -cmd "node ser
 # Build and test on pull
 gitpull -r https://github.com/company/app.git -precmd "make test && make build && systemctl restart app" -createfile text -filename .version -text "v1.0.0"
 ```
-<img src="Screenshot_20260403_223513.png" width="200" alt="gitpullhelp">
+<img src="Screenshot_20260403_223513.png" width="100%" alt="gitpullhelp">
