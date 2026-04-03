@@ -7,20 +7,20 @@ GitPull is a lightweight daemon that automatically monitors, pulls, and manages 
 
 ## ✨ Features
 
-- **🔄 Auto Pull & Clone** - Automatically clones new repos and pulls updates every 30 seconds
-- **📊 Web Dashboard** - Real-time monitoring with live updates, logs, and one-click controls
-- **🔐 PAM Authentication** - System-level auth with session management and rate limiting
-- **⚙️ Service Management** - Auto-create systemd services, restart services on updates
-- **📁 Multi-Branch Support** - Track multiple branches per repository simultaneously
-- **🔑 Git Authentication** - Token, password, or SSH key authentication support
-- **📝 Pre-Commands** - Run custom scripts before or after git operations
-- **📄 Auto File Creation** - Create or copy files into repositories automatically
-- **⏸️ Pause/Resume** - Temporarily suspend monitoring for any repository
-- **🔄 Smart Retries** - Exponential backoff for network failures (up to 5 retries)
-- **🎨 Modern UI** - Dark/light theme, responsive design, real-time SSE updates
-- **📁 Multi-Folder Support** - Monitor repositories across different directories
+- **Auto Pull & Clone** - Automatically clones new repos and pulls updates every 30 seconds
+- **Web Dashboard** - Real-time monitoring with live updates, logs, and one-click controls
+- **PAM Authentication** - System-level auth with session management and rate limiting
+- **Service Management** - Auto-create systemd services, restart services on updates
+- **Multi-Branch Support** - Track multiple branches per repository simultaneously
+- **Git Authentication** - Token, password, or SSH key authentication support
+- **Pre-Commands** - Run custom scripts before or after git operations
+- **Auto File Creation** - Create or copy files into repositories automatically
+- **Pause/Resume** - Temporarily suspend monitoring for any repository
+- **Smart Retries** - Exponential backoff for network failures (up to 5 retries)
+- **Modern UI** - Dark/light theme, responsive design, real-time SSE updates
+- **Multi-Folder Support** - Monitor repositories across different directories
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -37,11 +37,13 @@ sudo ./gitpull -d # Run gitpull as a non system-wide global command
 
 ##  First initialization
 
-
 gitpull --service # create the gitpull as a service and start the gitpull service on port :8445
-
 #or create a git -r respository clone and gitpull ask you if you want to run gitpull as a service 
+```
 
+<img src="dashboard.png" width="200" alt="dashboard">
+
+```bash
 ##	Basic usage
 
 # Add a repository with default settings (main branch, 60s interval)
@@ -140,11 +142,11 @@ gitpull -list # List all respository
 
 gitpull -find https://github.com/user/repo.git #find a respository
 
-# Pause/Resume repository (from dashboard UI)
-# Click the Pause/Resume button in the web interface
+```
 
-# Manually trigger pull for a repository
-# Click the Pull button in the dashboard
+<img src="Screenshot_20260403_223815.png" width="200" alt="gitpull">
+
+```bash
 
 ##	Daemon Management- Daemon can be used if Gitpull is not running as a systemd service 
 
@@ -204,3 +206,5 @@ gitpull -r https://github.com/company/webapp.git -b production -s -cmd "node ser
 #CI/CD Pipeline Integration
 # Build and test on pull
 gitpull -r https://github.com/company/app.git -precmd "make test && make build && systemctl restart app" -createfile text -filename .version -text "v1.0.0"
+```
+<img src="Screenshot_20260403_223513.png" width="200" alt="gitpullhelp">
