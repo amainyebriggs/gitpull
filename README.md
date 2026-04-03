@@ -33,6 +33,7 @@ sudo chmod +x gitpull
 # Or install directly
 sudo cp gitpull /usr/local/bin/ # Run gitpull as system wide global command
 
+sudo ./gitpull -d # Run gitpull as a non system-wide global command
 
 ##  First initialization
 
