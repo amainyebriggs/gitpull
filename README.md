@@ -207,4 +207,4 @@ gitpull -r https://github.com/company/webapp.git -b production -s -cmd "node ser
 # Build and test on pull
 gitpull -r https://github.com/company/app.git -precmd "make test && make build && systemctl restart app" -createfile text -filename .version -text "v1.0.0"
 ```
-<img src="Screenshot_20260403_223513.png" width="100%" alt="gitpullhelp">
+<img src="gitpull-demo.gif" width="100%" alt="gitpullhelp">
