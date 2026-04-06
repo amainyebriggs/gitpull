@@ -181,8 +181,7 @@ sudo systemctl stop gitpull-daemon
   
 ##	Docker Microservices Stack
 # Service 1: API Gateway
-cd /opt/services
-gitpull -r https://github.com/company/gateway.git -s -cmd "docker-compose up -d gateway"
+cd /opt/services && gitpull -r https://github.com/company/gateway.git -s -cmd "docker-compose up -d gateway"
 
 # Service 2: Auth Service  
 gitpull -r https://github.com/company/auth.git -s -cmd "docker-compose up -d auth"
