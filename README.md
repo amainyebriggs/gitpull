@@ -195,7 +195,7 @@ cd /var/www/html && gitpull -r https://github.com/company/website.git -b main -p
 #	Auto-Deploy Node.js Application
 # Add repository with auto-restart
 
-cd /var/www && gitpull -r https://github.com/company/webapp.git -b production -s -cmd "node server.js" -precmd "npm install && npm run build" -createfile text -filename .env -text "NODE_ENV=production\nPORT=3000"
+cd /var/www && gitpull -r https://github.com/company/webapp.git -b production -s -cmd "node server.js" -precmd "npm install && npm run build" -createfile text -filename .env -text "NODE_ENV=production\nPORT=4000"
   
 #CI/CD Pipeline Integration
 # Build and test on pull
