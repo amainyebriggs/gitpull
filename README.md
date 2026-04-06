@@ -59,15 +59,13 @@ gitpull -r https://github.com/user/repo.git -b main,develop,staging,feature-x
 gitpull -r https://github.com/user/repo.git -c 120
 
 # Add repository in specific directory (run from that directory)
-cd /var/www/
-gitpull -r https://github.com/user/webapp.git
+cd /var/www/ && gitpull -r https://github.com/user/webapp.git
 
 # Add multiple repositories in different folders
 cd /home/user/projects
 gitpull -r https://github.com/user/backend.git
 
-cd /var/services  
-gitpull -r https://github.com/user/api-gateway.git
+cd /var/services && gitpull -r https://github.com/user/api-gateway.git
 
 ##	Authentication Usage
 
