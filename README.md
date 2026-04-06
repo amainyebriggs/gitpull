@@ -22,6 +22,7 @@ GitPull is a lightweight daemon that automatically monitors, pulls, and manages 
 - **Modern UI** - Dark/light theme, responsive design, real-time SSE updates
 - **Multi-Folder Support** - Monitor repositories across different directories
 
+
 ## Quick Start
 
 ### Installation
