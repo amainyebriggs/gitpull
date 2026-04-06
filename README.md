@@ -7,7 +7,9 @@ GitPull is a lightweight daemon that automatically monitors, pulls, and manages 
 
 ## Features
 
-- **Auto Pull & Clone** - Automatically clones new repos and pulls updates every 30 seconds
+- **Auto Pull & Clone** - Automatically clones new repos and pulls updates every 60 seconds
+- **Restore** - Autobackup of repository before file changes pull, easy to restore failed pulls
+- **Email** - Email notification for events(clone,cmd,precmd,pull,restore,pause,restart,stop,delete)
 - **Web Dashboard** - Real-time monitoring with live updates, logs, and one-click controls
 - **PAM Authentication** - System-level auth with session management and rate limiting
 - **Service Management** - Auto-create systemd services, restart services on updates
