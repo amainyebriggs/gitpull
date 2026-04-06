@@ -177,8 +177,7 @@ sudo journalctl -u gitpull-daemon -f
 
 # Stop daemon
 sudo systemctl stop gitpull-daemon
-  
-  
+    
 ##	Docker Microservices Stack
 # Service 1: API Gateway
 cd /opt/services && gitpull -r https://github.com/company/gateway.git -s -cmd "docker-compose up -d gateway"
@@ -191,8 +190,7 @@ gitpull -r https://github.com/company/worker.git -s -cmd "docker-compose up -d w
 
 ##	Static Website with Nginx
 # Pull static site and reload nginx
-cd /var/www/html
-gitpull -r https://github.com/company/website.git -b main -precmd "chown -R www-data:www-data . && systemctl reload nginx"
+cd /var/www/html && gitpull -r https://github.com/company/website.git -b main -precmd "chown -R www-data:www-data . && systemctl reload nginx"
 
 #	Auto-Deploy Node.js Application
 # Add repository with auto-restart
