@@ -3,12 +3,15 @@
 **Automated Git Repository Manager & Deployment Daemon**
 
 
-GitPull is a lightweight daemon that automatically monitors, pulls, and manages multiple Git repositories with a real-time web dashboard. Perfect for auto-deployment, keeping dev environments in sync, or managing microservices.
+GitPull is a production-grade, automated repositories management and deployment daemon. It continuously monitors, pulls, and manages multiple Git repos simultaneously, with real-time web dashboard for control.Gitpull handles auto-deployment,keeping development environments in sync and managing microservices across distributed infrastructure
 
 ## Features
 
 - **Auto Pull & Clone** - Automatically clones new repos and pulls updates every 60 seconds
 - **Restore** - Autobackup of repository before file changes pull, easy to restore failed pulls
+- **Command restriction** - allowedcmd restricts service/precmd commands to specific binaries(cmd commands) only
+- **Security hardening** - Services run with ProtectSystem=strict, ProtectHome=read-only, PrivateTmp=yes
+- **Auto-restart** - Services restart automatically on failure
 - **Email** - Email notification for events(clone,cmd,precmd,pull,restore,pause,restart,stop,delete)
 - **Web Dashboard** - Real-time monitoring with live updates, logs, and one-click controls
 - **PAM Authentication** - System-level auth with session management and rate limiting
@@ -131,9 +134,6 @@ gitpull -r https://github.com/user/webapp.git -s -cmd "gunicorn app:app" -precmd
 
 ##	Repository Management
 
-# List all monitored repositories (via dashboard)
-# Just open http://localhost:8445
-
 # Delete a repository (removes files and service)
 gitpull -r https://github.com/user/repo.git -delete
 
@@ -180,8 +180,13 @@ sudo journalctl -u gitpull-daemon -f
 
 # Stop daemon
 sudo systemctl stop gitpull-daemon
+    ## Security-Command restriction##
+   
+   gitpull -r https://github.com/company/auth.git -s -cmd "node server" -precmd "npm install && mkdir foldername" -allowedcmd "node,npm,mkdir" ## this only expose the service to the allowed commands
+
     
 ##	Docker Microservices Stack
+
 # Service 1: API Gateway
 cd /opt/services && gitpull -r https://github.com/company/gateway.git -s -cmd "docker-compose up -d gateway"
 
@@ -191,7 +196,6 @@ gitpull -r https://github.com/company/auth.git -s -cmd "docker-compose up -d aut
 # Service 3: Worker Service
 gitpull -r https://github.com/company/worker.git -s -cmd "docker-compose up -d worker"
 
-##	Static Website with Nginx
 # Pull static site and reload nginx
 cd /var/www/html && gitpull -r https://github.com/company/website.git -b main -precmd "chown -R www-data:www-data . && systemctl reload nginx"
 
@@ -201,6 +205,7 @@ cd /var/www/html && gitpull -r https://github.com/company/website.git -b main -p
 cd /var/www && gitpull -r https://github.com/company/webapp.git -b production -s -cmd "node server.js" -precmd "npm install && npm run build" -createfile text -filename .env -text "NODE_ENV=production\nPORT=4000"
   
 #CI/CD Pipeline Integration
+
 # Build and test on pull
 gitpull -r https://github.com/company/app.git -precmd "make test && make build && systemctl restart app" -createfile text -filename .version -text "v1.0.0"
 ```
