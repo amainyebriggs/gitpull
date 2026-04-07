@@ -180,10 +180,19 @@ sudo journalctl -u gitpull-daemon -f
 
 # Stop daemon
 sudo systemctl stop gitpull-daemon
-    ## Security-Command restriction##
-   
-   gitpull -r https://github.com/company/auth.git -s -cmd "node server" -precmd "npm install && mkdir foldername" -allowedcmd "node,npm,mkdir" ## this only expose the service to the allowed commands
 
+## Security-Command restriction##
+   
+sudo gitpull -r https://github.com/company/auth.git -s -cmd "node server" -precmd "npm install && mkdir foldername" -allowedcmd "node,npm,mkdir" ## this only expose the service to the allowed commands
+
+    # DON'T allow dangerous wildcards
+-allowedcmd "*"                    # Defeats the purpose
+
+# DON'T allow shell access
+-allowedcmd "sh,bash,dash"         # Allows arbitrary command execution
+
+# DON'T allow system modification
+-allowedcmd "systemctl,chmod,chown,useradd"
     
 ##	Docker Microservices Stack
 
