@@ -20,6 +20,7 @@ GitPull is a production-grade, automated repositories management and deployment 
 - **Git Authentication** - Token, password, or SSH key authentication support
 - **Pre-Commands** - Run custom scripts before or after git operations
 - **Auto File Creation** - Create or copy files into repositories automatically
+- **Runtime sensitive file encryption** - Uses systemd to encrypt creddentials and makes it available to the running service via os.env($CREDENTIALS_DIRECTORY/yourfilename) using -envencrypt flag note:not only for env files
 - **Pause/Resume** - Temporarily suspend monitoring for any repository
 - **Smart Retries** - Exponential backoff for network failures (up to 5 retries)
 - **Modern UI** - Dark/light theme, responsive design, real-time SSE updates
@@ -184,6 +185,7 @@ sudo systemctl stop gitpull-daemon
 ## Security-Command restriction##
    
 sudo gitpull -r https://github.com/company/auth.git -s -cmd "node server" -precmd "npm install && mkdir foldername" -allowedcmd "node,npm,mkdir" ## this only expose the service to the allowed commands
+sudo gitpull -r https://github.com/company/auth.git -s -cmd "node server" -precmd "npm install && mkdir foldername" -envencrypt "myfile.env,myfile.txt,myfile1.cert" ## encrypt files and only decrypt during runtome and send to memory then make it available via memory path to the os.env($CREDENTIALS_DIRECTORY/yourfilename). This approach combines hardware locking, file system isolation, and memory protection
 
     # DON'T allow dangerous wildcards
 -allowedcmd "*"                    # Defeats the purpose
